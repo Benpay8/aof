@@ -1,0 +1,650 @@
+:root {
+  --bg: #09090b;
+  --bg-soft: #111215;
+  --panel: rgba(255, 255, 255, 0.04);
+  --panel-strong: #17181d;
+  --text: #f7f7f4;
+  --muted: #a8acb3;
+  --line: rgba(255, 255, 255, 0.1);
+  --accent: #d53631;
+  --accent-dark: #9f201d;
+  --accent-soft: #f7d8d6;
+  --shadow: 0 26px 60px rgba(0, 0, 0, 0.34);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(213, 54, 49, 0.18), transparent 24%),
+    radial-gradient(circle at 90% 20%, rgba(255, 255, 255, 0.04), transparent 18%),
+    linear-gradient(180deg, #0e0f12 0%, var(--bg) 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.6), transparent);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.page-shell {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  background: rgba(9, 9, 11, 0.74);
+  backdrop-filter: blur(14px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.95rem;
+}
+
+.brand-emblem {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 1.4rem;
+  overflow: hidden;
+  background: #0d0d0f;
+  box-shadow: var(--shadow);
+}
+
+.brand-emblem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.16rem;
+}
+
+.brand-text strong,
+.site-nav a,
+h1,
+h2,
+h3,
+.hero-badge,
+.price-card h3,
+.equipment-item span:last-child,
+.day,
+.schedule-card strong,
+.gallery-overlay strong,
+.gallery-overlay span,
+.point-chip span:last-child {
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.brand-text small,
+.club-text p,
+.info-card p,
+.contact-card p,
+.hero-text {
+  color: var(--muted);
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.site-nav a {
+  font-size: 1rem;
+}
+
+.site-nav a:hover {
+  color: white;
+}
+
+.nav-toggle {
+  display: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.72rem 1rem;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 4.8rem 0 3rem;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: #d6d8de;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0;
+  max-width: 12ch;
+  font-size: clamp(3.4rem, 8vw, 6.2rem);
+  line-height: 0.92;
+}
+
+.hero-text {
+  max-width: 40rem;
+  margin: 1.25rem 0 0;
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.2rem;
+  padding: 0.88rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  color: white;
+  background: linear-gradient(135deg, var(--accent), #ea4943);
+}
+
+.button-secondary {
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.hero-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.6rem;
+}
+
+.point-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.icon {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--accent-soft);
+}
+
+.point-chip .icon {
+  color: var(--accent);
+}
+
+.hero-panel,
+.info-card,
+.price-card,
+.equipment-item,
+.contact-card,
+.schedule-card,
+.gallery-card {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+  box-shadow: var(--shadow);
+}
+
+.hero-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+  border-radius: 2rem;
+}
+
+.hero-badge {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  padding: 0.52rem 0.82rem;
+  border-radius: 999px;
+  color: white;
+  background: var(--accent);
+}
+
+.hero-photo {
+  position: relative;
+  height: 16rem;
+  margin: 1.2rem 0 1rem;
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.45)),
+    linear-gradient(135deg, rgba(213, 54, 49, 0.22), transparent 55%);
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-summary {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.hero-summary article {
+  display: grid;
+  gap: 0.14rem;
+  padding: 1rem;
+  border-radius: 1.15rem;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.hero-summary span,
+.contact-label,
+.price-label,
+.card-kicker {
+  color: #d8d9de;
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero-summary strong {
+  font-size: 1.35rem;
+}
+
+.hero-summary small {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.section-heading {
+  max-width: 50rem;
+  margin-bottom: 1.6rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(2.3rem, 5vw, 4.2rem);
+  line-height: 0.98;
+}
+
+.club-layout {
+  display: grid;
+  grid-template-columns: 0.88fr 1.12fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.club-text {
+  padding: 1.45rem;
+  border-left: 3px solid var(--accent);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+}
+
+.club-text p {
+  margin: 0;
+  line-height: 1.82;
+}
+
+.club-text p + p {
+  margin-top: 1rem;
+}
+
+.club-cards,
+.pricing-grid,
+.equipment-grid,
+.contact-layout,
+.schedule-grid,
+.gallery-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.club-cards {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.info-card,
+.price-card,
+.contact-card,
+.schedule-card {
+  padding: 1.25rem;
+  border-radius: 1.4rem;
+}
+
+.info-card h3,
+.contact-card h3,
+.price-card h3 {
+  margin: 0.55rem 0 0.6rem;
+  font-size: 1.85rem;
+}
+
+.info-card p,
+.contact-card p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.gallery-grid {
+  grid-template-columns: 1.35fr 1fr 1fr;
+}
+
+.gallery-card {
+  position: relative;
+  min-height: 17rem;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 1.6rem;
+}
+
+.gallery-card-large {
+  min-height: 24rem;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.02) contrast(1.02);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: auto 1rem 1rem 1rem;
+  padding: 1rem;
+  border-radius: 1.1rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.58));
+  backdrop-filter: blur(8px);
+}
+
+.gallery-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.58)),
+    linear-gradient(135deg, rgba(213, 54, 49, 0.14), transparent 48%);
+  pointer-events: none;
+}
+
+.gallery-overlay span {
+  display: block;
+  color: var(--accent-soft);
+  font-size: 0.86rem;
+}
+
+.gallery-overlay strong {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 1.4rem;
+}
+
+.schedule-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.schedule-card {
+  min-height: 11.8rem;
+}
+
+.day {
+  display: inline-block;
+  margin-bottom: 0.85rem;
+  color: var(--accent-soft);
+  font-size: 1rem;
+}
+
+.schedule-card strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 1.5rem;
+}
+
+.schedule-card p {
+  margin: 0 0 0.7rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.pricing-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.price-card {
+  display: grid;
+  align-content: start;
+  min-height: 12rem;
+}
+
+.price-card h3 {
+  font-size: 2.35rem;
+}
+
+.featured {
+  border-color: rgba(213, 54, 49, 0.56);
+  background: linear-gradient(180deg, rgba(213, 54, 49, 0.18), rgba(255, 255, 255, 0.02));
+}
+
+.equipment-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.equipment-item {
+  display: grid;
+  justify-items: center;
+  gap: 0.4rem;
+  min-height: 7.8rem;
+  padding: 1.15rem;
+  border-radius: 1.35rem;
+  text-align: center;
+}
+
+.equipment-item span:last-child {
+  font-size: 1.35rem;
+}
+
+.contact-layout {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.social-links {
+  display: grid;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-link img {
+  width: 3.6rem;
+  height: 3.6rem;
+  object-fit: cover;
+  border-radius: 1rem;
+  flex: 0 0 auto;
+  background: white;
+}
+
+.social-link span {
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.social-link-static {
+  color: var(--text);
+}
+
+.contact-card a {
+  color: white;
+}
+
+.contact-card a:hover {
+  color: var(--accent-soft);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 650ms ease, transform 650ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1100px) {
+  .hero,
+  .club-layout,
+  .gallery-grid,
+  .contact-layout,
+  .pricing-grid,
+  .schedule-grid,
+  .equipment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .club-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .page-shell {
+    width: min(100% - 1.2rem, 1180px);
+  }
+
+  .site-header {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    padding-top: 0.4rem;
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+
+  .club-cards {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    max-width: none;
+    font-size: clamp(2.6rem, 13vw, 4.5rem);
+  }
+
+  h2 {
+    font-size: clamp(1.95rem, 10vw, 3.1rem);
+  }
+
+  .hero-points {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .gallery-card-large,
+  .gallery-card {
+    min-height: 18rem;
+  }
+}
